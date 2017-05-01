@@ -1,6 +1,8 @@
 package com.naman14.cb_ui;
 
+import android.animation.Keyframe;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -59,21 +61,37 @@ public class CustomView extends View {
     private void init() {
         paint = new Paint();
         paint.setColor(color);
-        post(animate);
+
+        Keyframe kf0 = Keyframe.ofFloat(0f, 0f);
+        Keyframe kf1 = Keyframe.ofFloat(0.5f, 200f);
+        Keyframe kf2 = Keyframe.ofFloat(1f, 400f);
+
+        PropertyValuesHolder pvh = PropertyValuesHolder.ofKeyframe("radius", kf0, kf1, kf2);
+        ValueAnimator animator = ObjectAnimator.ofPropertyValuesHolder(this, pvh);
+        animator.setDuration(1000);
+        animator.start();
+
+//        post(animate);
+
 //        paint.setStyle(Paint.Style.STROKE);
 //        paint.setStrokeWidth(10);
 
     }
 
-    private Runnable animate = new Runnable() {
-        @Override
-        public void run() {
-            if(radius < 500) {
-                radius += 10;
-                invalidate();
-            }
-            postDelayed(this, 10);
-        }
-    };
+    public void setRadius(float value) {
+        this.radius = value;
+        invalidate();
+    }
+
+//    private Runnable animate = new Runnable() {
+//        @Override
+//        public void run() {
+//            if(radius < 500) {
+//                radius += 10;
+//                invalidate();
+//            }
+//            postDelayed(this, 10);
+//        }
+//    };
 
 }
