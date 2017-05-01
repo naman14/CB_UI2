@@ -3,6 +3,14 @@
 
     <declare-styleable name="CustomView">
         <attr name="circleColor" format="color"></attr>
+
+        <attr name="circleSize" format="enum">
+
+            <enum name="small" value="100"></enum>
+            <enum name="medium" value="300"></enum>
+            <enum name="large" value="600"></enum>
+
+        </attr>
     </declare-styleable>
 
 </resources>

@@ -12,6 +12,9 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.OvershootInterpolator;
+import android.widget.Button;
 
 /**
  * Created by naman on 1/5/17.
@@ -33,6 +36,7 @@ public class CustomView extends View {
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.CustomView);
         color = ta.getColor(R.styleable.CustomView_circleColor, Color.BLACK);
+        radius = ta.getFloat(R.styleable.CustomView_circleSize, 200f);
         ta.recycle();
         init();
     }
@@ -42,6 +46,7 @@ public class CustomView extends View {
         init();
 
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -69,6 +74,7 @@ public class CustomView extends View {
         PropertyValuesHolder pvh = PropertyValuesHolder.ofKeyframe("radius", kf0, kf1, kf2);
         ValueAnimator animator = ObjectAnimator.ofPropertyValuesHolder(this, pvh);
         animator.setDuration(1000);
+        animator.setInterpolator(new BounceInterpolator());
         animator.start();
 
 //        post(animate);
