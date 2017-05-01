@@ -6,15 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.naman14.cb_ui.MainActivity">
 
-<!--<com.naman14.cb_ui.CustomView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--app:circleColor="#009688"/>-->
+<com.naman14.cb_ui.CustomView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:circleColor="#009688"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text1"
-        android:text="LOLOLOL"/>
+        android:text="LOLOLOL"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>

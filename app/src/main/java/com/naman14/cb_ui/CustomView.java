@@ -19,6 +19,7 @@ public class CustomView extends View {
 
     private Paint paint;
     private int color;
+    private float radius;
 
     public CustomView(Context context) {
         super(context);
@@ -43,7 +44,7 @@ public class CustomView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawCircle(200, 200, 100, paint);
+        canvas.drawCircle(getWidth()/2, getHeight()/2, radius, paint);
 
 //        Path  path = new Path();
 //        path.moveTo(200,200);
@@ -58,9 +59,21 @@ public class CustomView extends View {
     private void init() {
         paint = new Paint();
         paint.setColor(color);
+        post(animate);
 //        paint.setStyle(Paint.Style.STROKE);
 //        paint.setStrokeWidth(10);
 
     }
+
+    private Runnable animate = new Runnable() {
+        @Override
+        public void run() {
+            if(radius < 500) {
+                radius += 10;
+                invalidate();
+            }
+            postDelayed(this, 10);
+        }
+    };
 
 }
