@@ -7,6 +7,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -43,16 +44,22 @@ public class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         canvas.drawCircle(200, 200, 100, paint);
+
+//        Path  path = new Path();
+//        path.moveTo(200,200);
+//        path.lineTo(500, 500);
+//        path.lineTo(500, 1000);
+//        path.lineTo(200, 200);
+//        canvas.drawPath(path, paint);
+//
+//        canvas.drawLine(200, 200, 500, 500, paint);
     }
 
     private void init() {
         paint = new Paint();
         paint.setColor(color);
-
-        ValueAnimator anim = ValueAnimator.ofFloat(0f, 400f);
-        anim.setDuration(200);
-        anim.start();
-
+//        paint.setStyle(Paint.Style.STROKE);
+//        paint.setStrokeWidth(10);
 
     }
 
